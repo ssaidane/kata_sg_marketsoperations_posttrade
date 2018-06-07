@@ -1,0 +1,20 @@
+<h1>Available Currencies</h1>
+
+<div >
+  <ul id="grouplist" class="list-group">
+    <li class="list-group-item col-md-5" (click)="voirDetail(c.id)"  *ngFor="let c of currencies">ID : {{c.id}} Type: {{c.type}} Symbol: {{c.symbol}}</li>
+
+  </ul>
+</div>
+  <div class="col-md-12">
+  <ul class="nav nav-pills">
+  <li class="nav-item" *ngFor="let p of pages;let i=index">
+
+    <a class="nav-link" href="" (click)="setPage(i,$event)">{{i}}</a>
+
+  </li>
+
+</ul>
+</div>
+<hr>
+

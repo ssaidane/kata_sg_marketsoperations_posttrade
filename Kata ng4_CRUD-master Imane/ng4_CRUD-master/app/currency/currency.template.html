@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="col-md-12">
+    <h1>Currency List</h1>
+      <nav class="navbar">
+          <input class="form-control" type="text" name="search">
+      </nav>
+      <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Type</th>
+        <th class="text-center">Symbol</th>
+        <th class="text-center">Price</th>
+        <th class="text-center">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let currency of currencies ; let i = index">
+          <td>{{i}}</td>
+        <td>{{ currency.id }}</td>
+        <td>{{ currency.currency_type }}</td>
+          <td>{{ currency.symbol }}</td>
+        <td>
+          <button class="btn btn-info"
+                        (click)="showEditCurrencyForm(currency)">
+                       <i class="fa fa-edit"></i>
+              </button>
+          <button class="btn btn-danger"
+                       (click)="removeCurrency(currency)">
+                       <i class="fa fa-minus"></i>
+            </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+      <button class="btn btn-success"
+               (click)="showAddCurrencyForm()"><i class="fa fa-plus"></i></button>
+  <br />
+  <br />
+
+  <form *ngIf="currencyForm">
+    <h2>Add New currency</h2>
+    <p>ID: <input type="text"
+                           name="id"
+                           [(ngModel)]="newCurrency.id" /></p>
+    <p>Name: <input type="text"
+                                 name="name"
+                                 [(ngModel)]="newCurrency.code" /></p>
+    <p>Description: <input type="text"
+                                          name="description"
+                                          [(ngModel)]="newCurrency.name" /></p>
+    <p>Price: <input type="text"
+                                name="price"
+                                [(ngModel)]="newCurrency.currency_type" /></p>
+    <p>
+      <button type="button"
+                   class="btn btn-primary"
+                   (click)="saveCurrency(newCurrency)">Submit</button>
+      <button type="button"
+                   class="btn btn-warning"
+                   (click)="cancelNewcurrency()">Cancel</button>
+    </p>
+   </form>
+
+    <form *ngIf="editCurrencyForm">
+    <h2>Edit currency Details</h2>
+    <p>ID: <input type="text"
+                           name="id"
+                           [(ngModel)]="editedCurrency.id" /></p>
+    <p>Name: <input type="text"
+                                 name="name"
+                                 [(ngModel)]="editedCurrency.code" /></p>
+    <p>Description: <input type="text"
+                                          name="description"
+                                          [(ngModel)]="editedCurrency.name" /></p>
+    <p>Price: <input type="text"
+                                name="price"
+                                [(ngModel)]="editedCurrency.currency_type" /></p>
+    <p>
+      <button type="button"
+                   class="btn btn-primary"
+                   (click)="updateCurrency(editedCurrency)">Submit</button>
+      <button type="button"
+                   class="btn btn-warning"
+                   (click)="cancelEdits()">Cancel</button>
+    </p>
+   </form>
+  </div>
+</div>
